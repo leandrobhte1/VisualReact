@@ -94,8 +94,8 @@ class AutoComplete extends React.Component {
      * @return {Markup} Component
      */
     renderItem(item, isHighlighted){
-        return (
-            <div className="opcoesLinguagens" style={{ background: isHighlighted ? 'lightgray' : 'white', padding: '10px 20px' }}>
+        return ( /// key should be item._id, but how our data doesn't have an id property we put name as key by now
+            <div key={item} className="opcoesLinguagens" style={{ background: isHighlighted ? 'lightgray' : 'white', padding: '10px 20px' }}>
                 {item}
             </div>   
         ); 

@@ -9,6 +9,8 @@ import { markAsDone } from './todoActions'
 import { markAsPending } from './todoActions'
 import { remove } from './todoActions'
 
+import { useTranslation, Trans } from "react-i18next";
+
 class TodoList extends Component {
 
     constructor(props){
@@ -53,8 +55,8 @@ class TodoList extends Component {
             <table className='table'>
                 <thead>
                     <tr>
-                        <th>Descrição</th>
-                        <th className='tableActions'>Ações</th>
+                        <th><Trans i18nKey="people">trans</Trans></th>
+                        <th className='tableActions'><Trans i18nKey="actions">trans</Trans></th>
                     </tr>
                 </thead>
                 <tbody>
