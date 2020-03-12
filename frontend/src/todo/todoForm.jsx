@@ -32,7 +32,7 @@ class TodoForm extends Component {
     render() {
         const { add, clear, search, description } = this.props
         return (
-            <div role='form' className='todoForm'>
+            <div role='form' className='todoForm container'>
                 <Grid cols='12 9 10'> {/* <div className= col-xs-12 col-sm-9 col-md-10> </div> */}
                     <div className="divInputSearc">
                         <AutoComplete></AutoComplete>

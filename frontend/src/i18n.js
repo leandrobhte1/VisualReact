@@ -10,23 +10,21 @@ i18n
     resources: {
       en: {
         translations: {
-          fist: "To get started, edit <1>src/App.js</1> and save to reload.",
-          "Welcome to React": "Welcome to React and react-i18next",
           welcome: "Hello <br/> <strong>World</strong>",
           people: "People",
           inclusion: "Inclusion",
-          about: "about",
+          about: "About",
           actions: "Actions",
           test: "Test",
           history: "Our history",
           mission: "Mission",
-          vision: "Vision"
+          vision: "Vision",
+          us: "us",
+          placeholder: "Write here a name"
         }
       },
       pt: {
         translations: {
-          first: "Para começar, edite <1>src/App.js</1> e salve para recarregar.",
-          "Welcome to React": "Bem vindo ao React e react-i18next",
           welcome: "Olá <br/> <strong>Mundo</strong>",
           people: "Pessoas",
           inclusion: "Inclusão",
@@ -35,7 +33,9 @@ i18n
           test: "Teste",
           history: "Nossa história",
           mission: "Missão",
-          vision: "Visão"
+          vision: "Visão",
+          us: "Nós",
+          placeholder: "Escreva aqui um nome"
         }
       }
     },
@@ -51,6 +51,7 @@ i18n
     interpolation: {
       escapeValue: false
     }
-  });
+  })
+  .then(function(t) { console.log(t('about')); });
 
 export default i18n;

@@ -10,27 +10,23 @@ import Routes from './routes'
 
 export default function App() {
 
-    const { t, i18n } = useTranslation();
+    let { t, i18n } = useTranslation();
 
-    const changeLanguage = lng => {
+    let changeLanguage = lng => {
         i18n.changeLanguage(lng);
+        window.location.reload(true) // to render again the input and table components and translate them
     };
-
-    const index = 11;
 
   return (
 
-    
-    <div className="container">
+    <div className="">
+      <div className="topMenu">
         <Menu></Menu>
-        <button onClick={() => changeLanguage("pt")}>pt</button>
-        <button onClick={() => changeLanguage("en")}>en</button>
-        <div className="App-intro">
-            {/* <Trans i18nKey="first">
-            To get started, edit <code>src/App.js</code> and save to reload.
-            </Trans>
-            <Trans i18nKey="welcome">trans</Trans> */}
+        <div className="buttonsMenu">
+          <button className="ptBR" onClick={() => changeLanguage("pt")}></button>
+          <button className="en" onClick={() => changeLanguage("en")}></button>
         </div>
+      </div>
         <Routes></Routes>
     </div>
 

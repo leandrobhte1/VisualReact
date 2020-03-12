@@ -11,22 +11,12 @@ import { remove } from './todoActions'
 
 import { useTranslation, Trans } from "react-i18next";
 
+import i18n from '../i18n';
+
 class TodoList extends Component {
 
     constructor(props){
         super(props)
-    }
-
-    compare(a, b) {
-        const itemA = a.createdAt 
-        const itemB = b.createdAt
-        let comparison = 0;
-        if (itemA > itemB) {
-            comparison = -1;
-        } else if (itemA < itemB) {
-            comparison = 1;
-        }
-        return comparison;
     }
 
     renderRows() {
@@ -52,24 +42,24 @@ class TodoList extends Component {
 
     render() {
         return (
-            <table className='table'>
-                <thead>
-                    <tr>
-                        <th><Trans i18nKey="people">trans</Trans></th>
-                        <th className='tableActions'><Trans i18nKey="actions">trans</Trans></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.renderRows()}
-                </tbody>
-            </table>
+            <div className="container">
+                <table className='table'>
+                    <thead>
+                        <tr>
+                            <th>{i18n.t('people')}</th>
+                            <th className='tableActions'>{i18n.t('actions')}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.renderRows()}
+                    </tbody>
+                </table>
+            </div>
+            
         )
     }
-
     
 }
-
-
 
 const mapStateToProps = state => ({list: state.todo.list})
 

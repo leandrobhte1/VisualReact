@@ -5,9 +5,18 @@ import faker from 'faker'
 // Import the Autocomplete Component
 import Autocomplete from 'react-autocomplete';
 
+import { useTranslation, Trans } from "react-i18next";
+
+import i18n from '../i18n';
+
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { add, searchPeople, changeDescription, search, clear, handlerKey, addLanguage, searchLanguages, changeDescriptionValue } from './todoActions'
+
+function myPlaceholder() {
+    return i18n.t('placeholder')
+}
+
 
 class AutoComplete extends React.Component {
 
@@ -122,7 +131,7 @@ class AutoComplete extends React.Component {
                     value={this.props.description}
                     onChange={this.onChange}
                     onSelect={this.onSelect}
-                    inputProps={{ className: "InputLanguages", placeholder: "Digite aqui um nome"}}
+                    inputProps={{ className: "InputLanguages", placeholder: myPlaceholder()}}
                 />
             </div>
         );

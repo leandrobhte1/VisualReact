@@ -15,6 +15,19 @@
     padding-bottom: 60px;
 }
 
+.navbar-inverse .navbar-brand{
+  color: white !important;
+}
+
+.navbar-inverse .navbar-nav>li>a{
+  color: white !important;
+}
+
+.navbar-inverse{
+  background-color: #0078B6 !important;
+  border-color: #0078B6 !important;
+}
+
 
 .InputLanguages{
   width: 100%;
@@ -27,12 +40,46 @@
   border-radius: 4px;
 }
 
+.navbar{
+  border-radius: 0 !important;
+}
+
+.logoSite{
+  max-width: 100px;
+}
+
 
 .divInputSearc div{
   width: 100% !important;
   max-width: 920px !important;
 }
 
+.ptBR{
+  background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/2000px-Flag_of_Brazil.svg.png) no-repeat;
+  background-size: cover;
+  width: 40px;
+  height: 25px;
+  margin-right: 10px;
+  border: none;
+}
+
+.en{
+  background: url(https://static.todamateria.com.br/upload/ba/nd/bandeira_americana_bb.jpg) no-repeat;
+  background-size: cover;
+  width: 40px;
+  height: 25px;
+  border: none;
+}
+
+.buttonsMenu{
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+.topMenu{
+  position: relative;
+}
 
 
 

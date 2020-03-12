@@ -8,8 +8,6 @@ const URLLanguages = 'http://localhost:3007/api/languages'
 
 faker.locale = "pt_BR";
 
-
-
 const popula = () => {
 
     let pessoas = [];
@@ -27,8 +25,6 @@ const popula = () => {
 
 
 export const searchPeople = (searchText) => {
-
-    
 
     let filter = nomesPessoas.filter( (nomesPessoas) => {
         return nomesPessoas.toLowerCase().indexOf(searchText.toLowerCase()) > -1;
@@ -53,9 +49,9 @@ export const changeDescriptionValue = (value) => {
 export const search = () => {
 
     return (dispatch, getState) => {
-        const description = getState().todo.description
-        const search = description ? `&description__regex=/${description}/` : ''
-        const request = axios.get(`${URL}?sort=-createdAt${search}`)
+        let description = getState().todo.description
+        let search = description ? `&description__regex=/${description}/` : ''
+        let request = axios.get(`${URL}?sort=-createdAt${search}`)
             .then(resp => dispatch({type: 'TODO_SEARCHED', payload: resp.data}))
     }
 }
