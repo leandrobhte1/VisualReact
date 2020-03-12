@@ -29,10 +29,10 @@ class TodoList extends Component {
             <tr key={todo._id}>
                 <td className={todo.done ? 'markedAsDone' : ''}>{todo.description}</td>
                 <td>
-                    <IconButton style='success' icon='check' hide={!todo.done}
+                    {/* <IconButton style='success' icon='check' hide={!todo.done}
                         onClick={() => props.markAsDone(todo)}></IconButton>
                     <IconButton style='warning' icon='undo' hide={!todo.done}
-                        onClick={() => props.markAsPending(todo)}></IconButton>
+                        onClick={() => props.markAsPending(todo)}></IconButton> */}
                     <IconButton style='danger' icon='trash-o' 
                         onClick={() => this.props.remove(todo)}></IconButton>
                 </td>
