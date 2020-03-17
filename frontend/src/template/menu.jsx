@@ -16,7 +16,7 @@ export default props => (
 
             <div id='navbar' className='navbar-collapse collapse'>
                 <ul className="nav navbar-nav">
-                    <li><a href="#/todos">{i18n.t('people')}</a></li>
+                    <li><a href="#/todos">{i18n.t('emissor')}</a></li>
                     <li><a href="#/about">{i18n.t('about')}</a></li>
                 </ul>
             </div>

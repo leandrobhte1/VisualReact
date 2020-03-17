@@ -20,7 +20,16 @@ i18n
           mission: "Mission",
           vision: "Vision",
           us: "us",
-          placeholder: "Write here a name"
+          placeholder: "Write here a name",
+          emissor: "Emissor",
+          senhas: "senhas",
+          Atendimento: "Atendimento",
+          Fila: "Fila",
+          Guiche: "Guiche",
+          Atendente: "Atendente",
+          Status: "Status",
+          Tempo: "Tempo",
+          Hora: "Hora"
         }
       },
       pt: {
@@ -35,7 +44,16 @@ i18n
           mission: "Missão",
           vision: "Visão",
           us: "Nós",
-          placeholder: "Escreva aqui um nome"
+          placeholder: "Escreva aqui um nome",
+          emissor: "Emissor",
+          senhas: "senhas",
+          Atendimento: "Atendimento",
+          Fila: "Fila",
+          Guiche: "Guiche",
+          Atendente: "Atendente",
+          Status: "Status",
+          Tempo: "Tempo",
+          Hora: "Hora"
         }
       }
     },

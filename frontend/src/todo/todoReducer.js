@@ -1,4 +1,4 @@
-const INITIAL_STATE = {description: '',list: [], languages: [], options: []}
+const INITIAL_STATE = {description: '',list: [], languages: [], options: [], fluxo: 0}
 
 export default (state = INITIAL_STATE, action) => {
     switch(action.type) {
@@ -12,6 +12,9 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, options: action.payload}
         case 'TODO_CLEAR':
             return { ...state, description: ''}
+        case 'FLUXO_CHANGED':
+            console.log("ola");
+            return { ...state, fluxo: action.payload}
         default:
             return state
     }
