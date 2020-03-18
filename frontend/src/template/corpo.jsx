@@ -11,7 +11,6 @@ class Corpo extends Component {
     }
 
     render() {
-
         return (
             
             <div className="corpoContent">

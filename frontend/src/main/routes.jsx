@@ -6,6 +6,7 @@ import About from '../about/about'
 import Senha from '../senha/senha'
 import CriarSenha from '../senha/criarSenha'
 import AtenderSenha from '../senha/atenderSenha'
+import SenhasFila from '../senha/senhasFila'
 
 export default props => (
     <Router history={hashHistory}>
@@ -14,6 +15,7 @@ export default props => (
         <Route path='/senha' component={Senha}></Route>
         <Route path='/senhaCriar' component={CriarSenha}></Route>
         <Route path='/atenderSenha' component={AtenderSenha}></Route>
+        <Route path='/senhasFila' component={SenhasFila}></Route>
         <Redirect from='*' to='/home'></Redirect>
     </Router>
 )

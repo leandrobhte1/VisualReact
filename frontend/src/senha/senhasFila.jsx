@@ -17,7 +17,7 @@ import { bindActionCreators} from 'redux'
 
 import { changeFluxo, nextTicket, changeSenha, insertSenhaList } from '../senha/senhaActions'
 
-class CriarSenha extends Component {
+class SenhasFila extends Component {
 
     constructor(props) {
         super(props);
@@ -30,8 +30,23 @@ class CriarSenha extends Component {
         this.props.insertSenhaList(senhasFila + 1);
     }
 
+    handlerTickets(){
+        let { senhasFila, senhasList, servico } = this.props
+
+        if(senhasList.length == 0){
+            return (
+                <span>Nenhuma senha na fila!</span>
+            )
+        }
+
+        return senhasList.map(pass => (
+            <span key={pass}>{pass}, </span>
+        ))
+    }
+
     render() {
         let { senhasFila, senhasList, servico } = this.props
+
         return (
             <div>
                 <PageHeader name={i18n.t('emissor')} small={i18n.t('senhas')}></PageHeader>
@@ -43,8 +58,8 @@ class CriarSenha extends Component {
                     
                     <MenuLateralOficial></MenuLateralOficial>
                     <div className="preenche">
-                        <h3>Serviços Disponíveis: </h3>
-                        <a href="#/senha"><button onClick={() => this.handlerClick()} className="serv">{servico}</button></a>
+                        <h3>Senhas na fila: </h3>
+                        <span>{this.handlerTickets()}</span>
                     </div>
                     
                 </div>
@@ -54,8 +69,8 @@ class CriarSenha extends Component {
 
 }
 
-const mapStateToProps = state => ({fluxo: state.senha.fluxo, senhaAtual: state.senha.senhaAtual, senhasFila: state.senha.senhasFila, servico: state.senha.servico})
+const mapStateToProps = state => ({fluxo: state.senha.fluxo, senhasList: state.senha.senhasList, senhaAtual: state.senha.senhaAtual, senhasFila: state.senha.senhasFila, servico: state.senha.servico})
 
 const mapDispatchToProps = dispatch => bindActionCreators({ changeFluxo, nextTicket, changeSenha, insertSenhaList }, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(CriarSenha)
+export default connect(mapStateToProps, mapDispatchToProps)(SenhasFila)

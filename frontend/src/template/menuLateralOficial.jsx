@@ -5,7 +5,7 @@ import IconButton from '../template/iconButton'
 import { connect } from 'react-redux'
 import { bindActionCreators} from 'redux'
 
-import { changeFluxo } from '../senha/senhaActions'
+import { changeFluxo, nextTicket, changeSenha, insertSenhaList, finalizaSenhaList } from '../senha/senhaActions'
 
 import { Button, Header, Icon, Modal } from 'semantic-ui-react'
 
@@ -20,42 +20,65 @@ class MenuLateralOficial extends Component {
 
     constructor(props) {
         super(props);
-
-        // Set initial State
-        // this.state = {
-        //     fluxo: 0 /// 0-inicial  1-chamar próxima senha  2-atender senha
-        // };
     }
 
     handlerClick(n){
 
-        const { fluxo } = this.props
+        let { fluxo, senhaAtual, senhasFila, senhasList } = this.props
 
-        console.log("Chegou aqui!", fluxo);
+
+        if(n == 1){
+            this.props.nextTicket(senhaAtual + 1)
+        } else if (n == 4 ){
+            this.props.changeSenha(senhasFila + 1)
+            this.props.insertSenhaList(senhasList[senhasFila + 1]);
+        } else if(n == 7){
+            this.props.changeSenha(senhasFila - 1)
+            console.log("senha finalizada.: ",senhaAtual);
+            this.props.finalizaSenhaList(senhaAtual)
+        }
+
+        // console.log("Chegou aqui!", fluxo);
 
         this.props.changeFluxo(n);
-        // this.setState({
-        //     fluxo: n
-        // });
+    }
+
+    nextTicket(){
+
+        let { senhasFila, senhaAtual } = this.props
+
+        if(senhasFila <= senhaAtual){
+            alert("Não existem senhas na fila! Para chamar a próxima senha crie uma senha antes!");
+        } else {
+            this.handlerClick(1);
+        }
+    }
+
+    showSenhasFila() {
+        let { fluxo, senhaAtual, senhasFila, senhasList } = this.props
+
+        console.log("senhasFila.: ",senhasList);
+
+
     }
 
     renderRows(fluxo) {
 
-        console.log("fluxo.: ",fluxo);
+        // console.log("fluxo.: ",fluxo);
 
         if(fluxo == 0) {
             return (
                 <div className="actionsList">
                     <ul className="menuList">
-                        <li onClick={() => this.handlerClick(1)} className="menuListItem"><a href="#/senha"><ModalBT name="Próxima senha" titulo="Já existe senha vinculada!" conteudo="Confirma chamada de outra senha?"></ModalBT></a></li>
+                        <li onClick={() => this.nextTicket()} className="menuListItem"><button className="menuButton">Próxima senha</button></li>
                         <div className="ui divider"></div>
                         <li className="menuListItem"><ModalBTInput name="Senha Específica" titulo="Digite a senha desejada abaixo!" placeholder="Digite a senha desejada aqui" ></ModalBTInput></li>
                         <div className="ui divider"></div>
                         <li className="menuListItem"><a href="#/senhaCriar"><button className="menuButton">Criar senha</button></a></li>
                         <div className="ui divider"></div>
-                        <li className="menuListItem"><button className="menuButton">Senhas na fila</button></li>
+                        <li onClick={() => this.showSenhasFila()} className="menuListItem"><a href="#/senhasFila"><button className="menuButton">Senhas na fila</button></a></li>
                         <div className="ui divider"></div>
-                        <li className="menuListItem"><button className="menuButton">Cancelar senha</button></li>
+                        <li className="menuListItem"><ModalBTInput name="Cancelar senha" titulo="Digite a senha que deseja cancelar abaixo!" placeholder="Digite a senha a ser cancelada aqui" ></ModalBTInput></li>
                     </ul>
                 </div>
             )
@@ -63,13 +86,13 @@ class MenuLateralOficial extends Component {
             return (
                 <div className="actionsList">
                     <ul className="menuList">
-                        <li className="menuListItem"><button className="menuButton">Próxima senha</button></li>
+                        <li onClick={() => this.nextTicket()} className="menuListItem"><button className="menuButton">Próxima senha</button></li>
                         <div className="ui divider"></div>
                         <li onClick={() => this.handlerClick(2)} className="menuListItem"><a href="#/atenderSenha"><button className="menuButton">Inicia atendimento</button></a></li>
                         <div className="ui divider"></div>
                         <li className="menuListItem"><ModalBTInput name="Senha Específica" titulo="Digite a senha desejada abaixo!" placeholder="Digite a senha desejada aqui" ></ModalBTInput></li>
                         <div className="ui divider"></div>
-                        <li className="menuListItem"><button className="menuButton">Senhas na fila</button></li>
+                        <li onClick={() => this.showSenhasFila()} className="menuListItem"><a href="#/senhasFila"><button className="menuButton">Senhas na fila</button></a></li>
                         <div className="ui divider"></div>
                         <li className="menuListItem"><button className="menuButton">Descongelar senha</button></li>
                         <div className="ui divider"></div>
@@ -81,7 +104,7 @@ class MenuLateralOficial extends Component {
                         <div className="ui divider"></div>
                         <li className="menuListItem"><button className="menuButton">Filtro atividade</button></li>
                         <div className="ui divider"></div>
-                        <li className="menuListItem"><button className="menuButton">Cancela senha</button></li>
+                        <li className="menuListItem"><ModalBTInput name="Cancelar senha" titulo="Digite a senha que deseja cancelar abaixo!" placeholder="Digite a senha a ser cancelada aqui" ></ModalBTInput></li>
                     </ul>
                 </div>
             )
@@ -89,9 +112,9 @@ class MenuLateralOficial extends Component {
             return (
                 <div className="actionsList">
                     <ul className="menuList">
-                        <li onClick={() => this.handlerClick(0)} className="menuListItem"><a href="#/home"><button className="menuButton">Finaliza atendimento</button></a></li>
+                        <li onClick={() => this.handlerClick(7)} className="menuListItem"><a href="#/home"><button className="menuButton">Finaliza atendimento</button></a></li>
                         <div className="ui divider"></div>
-                        <li className="menuListItem"><button className="menuButton">Cancela senha</button></li>
+                        <li className="menuListItem"><ModalBTInput name="Cancelar senha" titulo="Digite a senha que deseja cancelar abaixo!" placeholder="Digite a senha a ser cancelada aqui" ></ModalBTInput></li>
                         <div className="ui divider"></div>
                         <li className="menuListItem"><button className="menuButton">Cancela atendimento</button></li>
                         <div className="ui divider"></div>
@@ -100,13 +123,29 @@ class MenuLateralOficial extends Component {
                     </ul>
                 </div>
             )
+        }else {
+            return (
+                <div className="actionsList">
+                    <ul className="menuList">
+                        <li onClick={() => this.nextTicket()} className="menuListItem"><button className="menuButton">Próxima senha</button></li>
+                        <div className="ui divider"></div>
+                        <li className="menuListItem"><ModalBTInput name="Senha Específica" titulo="Digite a senha desejada abaixo!" placeholder="Digite a senha desejada aqui" ></ModalBTInput></li>
+                        <div className="ui divider"></div>
+                        <li className="menuListItem"><a href="#/senhaCriar"><button className="menuButton">Criar senha</button></a></li>
+                        <div className="ui divider"></div>
+                        <li onClick={() => this.showSenhasFila()} className="menuListItem"><a href="#/senhasFila"><button className="menuButton">Senhas na fila</button></a></li>
+                        <div className="ui divider"></div>
+                        <li className="menuListItem"><ModalBTInput name="Cancelar senha" titulo="Digite a senha que deseja cancelar abaixo!" placeholder="Digite a senha a ser cancelada aqui" ></ModalBTInput></li>
+                    </ul>
+                </div>
+            )
         }
     }
 
     render() {
-        const { fluxo } = this.props
+        let { fluxo } = this.props
         return (
-            <div className="">
+            <div className="leandrooliveira">
                 {this.renderRows(fluxo)}
             </div>
             
@@ -115,8 +154,8 @@ class MenuLateralOficial extends Component {
     
 }
 
-const mapStateToProps = state => ({fluxo: state.senha.fluxo})
+const mapStateToProps = state => ({fluxo: state.senha.fluxo, senhaAtual: state.senha.senhaAtual, senhasFila: state.senha.senhasFila, senhasList: state.senha.senhasList})
 
-const mapDispatchToProps = dispatch => bindActionCreators({ changeFluxo }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ changeFluxo, nextTicket, changeSenha, insertSenhaList, finalizaSenhaList }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(MenuLateralOficial)

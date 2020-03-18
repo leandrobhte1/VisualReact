@@ -13,7 +13,6 @@ export default (state = INITIAL_STATE, action) => {
         case 'TODO_CLEAR':
             return { ...state, description: ''}
         case 'FLUXO_CHANGED':
-            console.log("ola");
             return { ...state, fluxo: action.payload}
         default:
             return state
