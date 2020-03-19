@@ -31,7 +31,11 @@ class SenhasFila extends Component {
     }
 
     handlerTickets(){
+        
         let { senhasFila, senhasList, servico, senhaAtual } = this.props
+        
+
+        console.log("SenhasFila.: ",senhasFila);
 
         if(senhasList.length == 0){
             return (

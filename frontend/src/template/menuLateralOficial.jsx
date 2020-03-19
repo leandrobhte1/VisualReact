@@ -116,7 +116,7 @@ class MenuLateralOficial extends Component {
                         <div className="ui divider"></div>
                     </If>
                     <If test={fluxo == 0 || fluxo == 1 || fluxo == 3 || fluxo == 4 || fluxo == 5}>
-                        <li className="menuListItem"><ModalBTInput name="Senha Específica" titulo="Digite a senha desejada abaixo!" placeholder="Digite a senha desejada aqui" ></ModalBTInput></li>
+                        <li className="menuListItem"><a href="#/senhaEspecifica"><button className="menuButton">Senha específica</button></a></li>
                         <div className="ui divider"></div>
                     </If>
                     <If test={fluxo == 0 || fluxo == 2 || fluxo == 3 || fluxo == 4 || fluxo == 5}>

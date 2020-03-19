@@ -102,6 +102,7 @@ body {
     font-size: 16px;
     border: 1px solid #aaa;
     border-radius: 4px;
+    margin-right: 10px;
   }
   
   .react-autosuggest__input--focused {
