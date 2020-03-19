@@ -23,14 +23,22 @@ export const insertSenhaList = (array) => {
 
 export const finalizaSenhaList = (item) => {
 
-    console.log("ki.: ", item);
+    console.log("item.: ", item);
 
     let indice = item - 1;
 
     console.log("lista length.: ", lista);
+
+    let array = lista;
+
+    array.splice(indice,item);
+
+
     
-    lista.slice(indice, 1);
+    // lista.slice(indice, 1);
+
+    // lista.pop();
     
-    console.log("lista.: ",lista);
-    return [{ type: 'SENHAS_FILA_CHANGED', payload: lista }]
+    console.log("lista.: ",array);
+    return [{ type: 'SENHAS_FILA_CHANGED', payload: array }]
 }

@@ -24,14 +24,14 @@ class SenhasFila extends Component {
     }
 
     handlerClick(){
-        let { senhasFila, senhasList } = this.props
+        let { senhasFila, senhasList, senhaAtual } = this.props
 
         this.props.changeSenha(senhasFila + 1);
-        this.props.insertSenhaList(senhasFila + 1);
+        this.props.insertSenhaList(senhaAtual + 1);
     }
 
     handlerTickets(){
-        let { senhasFila, senhasList, servico } = this.props
+        let { senhasFila, senhasList, servico, senhaAtual } = this.props
 
         if(senhasList.length == 0){
             return (
